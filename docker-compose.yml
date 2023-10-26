@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  demo-app:
+    image: demo-app-demo-service  # Replace with your Docker image name
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_DATASOURCE_URL=jdbc:mysql://host.docker.internal:3306/demo_service
+      - SPRING_ZIPKIN_BASE_URL=http://host.docker.internal:9411
+    ports:
+      - "8081:8081"
+
+networks:
+  app-network:
+    driver: bridge
